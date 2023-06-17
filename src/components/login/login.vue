@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, defineProps, defineEmits } from 'vue';
 import { API } from '../Utils.ts';
-
+// TODO : securiser connexion et cookiser le tout
 const hasError = ref(false);
 const username = ref("");
 const password = ref("");

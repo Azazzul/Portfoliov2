@@ -27,7 +27,6 @@ export const getProjets = async (id?: number): Promise<string> => {
             // Ajoutez les options de la requête si nécessaire, comme les en-têtes
             headers: {
               'Accept': 'application/json',
-            //   'Access-Control-Allow-Origin': '*'
             }
         });
 
@@ -37,9 +36,12 @@ export const getProjets = async (id?: number): Promise<string> => {
         const result = await response.json();
         console.log(result);
 
-        return "ok";
+        return result;
     } catch (error) {
         console.log('unexpected error: ', error);
         return 'An unexpected error occurred';
     }
 };
+
+
+export const waitDelay = (ms:number) =>  new Promise(res => setTimeout(res,ms));

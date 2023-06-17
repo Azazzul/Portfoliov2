@@ -2,7 +2,13 @@
 import Projects from "components/projets/projects.vue";
 import {onMounted, ref} from "vue";
 import {waitDelay} from "./components/Utils.ts";
-import Login from "./components/projets/login.vue";
+import Login from "./components/login/login.vue";
+
+/* import the fontawesome core */
+import {library} from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 enum activated {
   main = "main",
@@ -12,8 +18,11 @@ enum activated {
   projets = "project",
   contact = "contact"
 }
+
 // check if the user is logged in
 const isLogged = ref(false);
+// check if the user has click on "connect"
+const isLoginIn = ref(false);
 const isMainPageDisplayed = ref(true);
 const isPresDisplayed = ref(false);
 const isParcoursDisplayed = ref(false);
@@ -21,6 +30,17 @@ const isSkillDisplayed = ref(false);
 const isProjectDisplayed: ref<boolean> = ref(false);
 const isContactDisplayed = ref(false);
 
+
+const openConnexionScreen = () => {
+  if (!isLogged?.value){
+    isLoginIn.value = true;
+  } else {
+    isLogged.value = false;
+  }
+}
+
+const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
+const toggleLoggedIn = () => isLogged.value = !isLogged.value;
 const switchDisplayedPart = (name: string) => {
   isMainPageDisplayed.value = false;
   isPresDisplayed.value = false;
@@ -63,17 +83,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="Name">
+  <login v-show="isLoginIn" @toggleLoginWindows="toggleLoginWindows" @toggleLoggedIn="toggleLoggedIn" ></login>
+  <div id="Name" class="div-centree">
     <h1>Benoit Fardoux</h1>
     <h2>Apprenti ingénieur spécialisé en informatique</h2>
   </div>
-  <div id="login" @click="isLogged = !isLogged">
+  <div id="login" @click="openConnexionScreen()">
     <div class="glitch-wrapper">
       <div class="glitch" data-text="Se connecter" v-show="!isLogged">Se connecter</div>
       <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>
     </div>
   </div>
-  <login></login>
 </template>
 
 <style scoped>
@@ -81,10 +101,8 @@ onMounted(async () => {
   border: solid white;
   color: white;
   border-radius: 8px;
-  position: absolute;
-  padding: 2%;
-  left: 30.85%;
-  top: 33.9%;
+//position: absolute; padding: 2%;
+//left: 30.85%; //top: 33.9%;
 }
 
 #login {
@@ -96,6 +114,7 @@ onMounted(async () => {
   padding: 1em;
   cursor: pointer;
 }
+
 
 /*
 texte gliche
@@ -277,11 +296,5 @@ texte gliche
   }
 }
 
-login{
-  position: absolute;
-  top: 0;
-  width: 0;
-  color: black;
-}
 
 </style>

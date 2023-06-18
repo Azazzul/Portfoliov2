@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {API, getProjets} from "../Utils.ts";
-import {markRaw, ref} from "vue";
+import {getProjets} from "../Utils.ts";
 
-const experience =ref(null);
 getProjets().then();
 // console.log(experience)
 </script>

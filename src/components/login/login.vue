@@ -1,40 +1,38 @@
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue';
-import { API } from '../Utils.ts';
+import {ref} from 'vue';
+import {API} from '../Utils.ts';
 // TODO : securiser connexion et cookiser le tout
 const hasError = ref(false);
 const username = ref("");
 const password = ref("");
-const emits = defineEmits(['toggleLoggedIn', 'toggleLoginWindows','openConnexionScreen']);
+const emits = defineEmits(['toggleLoggedIn', 'toggleLoginWindows', 'openConnexionScreen']);
 
+
+/**
+ * login to user account
+ */
 const loginToAccount = async () => {
-  // let pw: string;
-  // await Promise.resolve(crypto.subtle.digest("SHA-256", new TextEncoder().encode(password.value)).then(
-  //     res => {
-  //       pw = Array.prototype.map.call(new Uint8Array(res), x => (('00' + x.toString()).slice(-2))).join('');
-  //     }
-  // ));
   const data = {
     username: username.value,
     password: password.value
   };
-  const result = await fetch(API + '?action=login', {
+  await fetch(API + '?action=login', {
     headers: {
       'Content-Type': 'application/json',
     },
     method: "POST",
     body: JSON.stringify(data)
   }).then((response) => {
-    if (response.ok){
-        emits('toggleLoggedIn')
-        emits('toggleLoginWindows');
+    if (response.ok) {
+      emits('toggleLoggedIn')
+      emits('toggleLoginWindows');
     }
     return response.json();
-  }).then( (res) => {
-    if (!res.ok){
+  }).then((res) => {
+    if (!res.ok) {
       hasError.value = true;
     }
-  } ).finally(() => {
+  }).finally(() => {
     password.value = "";
     username.value = "";
   });
@@ -60,7 +58,8 @@ const loginToAccount = async () => {
 #loginForm {
   padding: 2%;
   width: 30em;
-//height: 20%; display: flex;
+//height: 20%;
+  display: flex;
   flex-direction: column;
 //background-color: white; backdrop-filter: blur(10px);
 //width: 30%; text-align: left;

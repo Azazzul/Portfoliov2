@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import Projects from "components/projets/projects.vue";
 import {onMounted, ref} from "vue";
 import {waitDelay} from "./components/Utils.ts";
 import Login from "./components/login/login.vue";
+import Contact from "./components/contact.vue";
 
-/* import the fontawesome core */
-import {library} from '@fortawesome/fontawesome-svg-core'
-
-/* import font awesome icon component */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 enum activated {
   main = "main",
@@ -27,12 +22,12 @@ const isMainPageDisplayed = ref(true);
 const isPresDisplayed = ref(false);
 const isParcoursDisplayed = ref(false);
 const isSkillDisplayed = ref(false);
-const isProjectDisplayed: ref<boolean> = ref(false);
+const isProjectDisplayed = ref(false);
 const isContactDisplayed = ref(false);
 
 
 const openConnexionScreen = () => {
-  if (!isLogged?.value){
+  if (!isLogged?.value) {
     isLoginIn.value = true;
   } else {
     isLogged.value = false;
@@ -78,12 +73,13 @@ const switchDisplayedPart = (name: string) => {
 
 onMounted(async () => {
   await waitDelay(5000);
-  switchDisplayedPart(activated.projets);
-})
+  switchDisplayedPart(activated.pres);
+});
+
 </script>
 
 <template>
-  <login v-show="isLoginIn" @toggleLoginWindows="toggleLoginWindows" @toggleLoggedIn="toggleLoggedIn" ></login>
+  <login v-show="isLoginIn" @toggleLoginWindows="toggleLoginWindows" @toggleLoggedIn="toggleLoggedIn"></login>
   <div id="Name" class="div-centree">
     <h1>Benoit Fardoux</h1>
     <h2>Apprenti ingénieur spécialisé en informatique</h2>
@@ -94,6 +90,16 @@ onMounted(async () => {
       <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>
     </div>
   </div>
+  <div id="presentation" class="popup" v-show="isPresDisplayed">
+    <h2>
+      A propos de moi
+    </h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet iaculis ipsum. Quisque lectus libero, efficitur a risus a, gravida scelerisque velit. Nam et est a sem accumsan pretium quis id sem. Nullam consectetur blandit enim non euismod. Suspendisse a sem in ex vehicula consequat. Etiam sed felis consectetur, tristique nisi quis, consequat ligula. Integer aliquam dolor non sem sagittis pellentesque. Duis porttitor viverra elit, a maximus lectus pharetra non. Duis viverra interdum sagittis. Nam vestibulum nunc eu eros vestibulum, et consequat turpis commodo. Aliquam finibus turpis enim, quis varius nisl pellentesque sit amet. In dignissim ex vel sem finibus vestibulum et posuere orci. Quisque laoreet purus ut risus egestas eleifend. Nullam dignissim varius elementum.
+    ...
+    <br>
+    <button> en savoir plus</button>
+  </div>
+  <contact></contact>
 </template>
 
 <style scoped>
@@ -101,10 +107,25 @@ onMounted(async () => {
   border: solid white;
   color: white;
   border-radius: 8px;
-//position: absolute; padding: 2%;
-//left: 30.85%; //top: 33.9%;
+  padding: 2em;
 }
-
+#presentation{
+  position: fixed;
+  top: 2em;
+  left: 3em;
+  padding: 1.5em;
+  width: 25%;
+  border-radius: 0;
+  border: solid 4px;
+  }
+#presentation button{
+  margin-top: 1em;
+  color: white;
+  background-color: transparent;
+  border: solid white 1px;
+  border-radius: 8px;
+  padding: 0.5em;
+}
 #login {
   border: solid white;
   border-radius: 8px;

@@ -3,31 +3,47 @@
 </script>
 
 <template>
-  <div id="contactForm" class="popup div-centree">
+  <div id="contactForm" class="popup">
+    <h2>Me contacter :</h2>
     <label for="email">
       Adresse email
     </label>
-    <div> ><span class="blink">_</span> <input type="email" id="email" name="email" placeholder="Adresse email"></div>
+    <div><span> ><span class="blink">_</span></span> <input type="email" id="email" name="email"
+                                                            placeholder="Adresse email"></div>
     <div>
       <label for="content">Contenu du mail</label>
       <br>
-      ><span class="blink">_</span>
-    <textarea id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4" cols="50"></textarea>
+      <span id="beforeArea"> ><span class="blink">_</span></span>
+      <textarea id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
+                cols="50"></textarea>
     </div>
+    <button>Envoyer mail</button>
   </div>
 </template>
 
 <style scoped>
-#contactForm{text-align: left;
+#contactForm button {
+  background: none;
+  border: solid lawngreen 1px;
+  color: lawngreen;
+}
+h2{
+  margin-top: 0;
+}
+#contactForm {
+  position: fixed;
+  text-align: left;
   background-color: black;
   color: lawngreen;
   padding: 2em;
   width: 30em;
-  top: 60%;
+  bottom: 1em;
+  right: 1em;
   display: flex;
   flex-direction: column;
 }
-#contactForm input, textarea{
+
+#contactForm input, textarea {
   color: lawngreen;
   border: none;
   outline: none;
@@ -36,22 +52,31 @@
   width: 25em;
 
 }
-#contactForm input::placeholder,textarea::placeholder{
+
+#beforeArea {
+  vertical-align: top;
+}
+
+#contactForm input::placeholder, textarea::placeholder {
   color: green;
 
 }
-#content{
+
+#content {
 
 }
+
 .blink {
-  animation: blink-animation 1s steps(5, start) infinite;
-  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  animation: blink-animation 01s steps(5, start) infinite;
+  -webkit-animation: blink-animation 01s steps(5, start) infinite;
 }
+
 @keyframes blink-animation {
   to {
     visibility: hidden;
   }
 }
+
 @-webkit-keyframes blink-animation {
   to {
     visibility: hidden;

@@ -41,7 +41,7 @@ const loginToAccount = async () => {
 
 <template>
   <div id="loginForm" class="popup div-centree">
-    <img src="../../assets/x-solid.svg" alt="X" @click="$emit('toggleLoginWindows');"/>
+    <img src="../../assets/x-solid.svg" alt="X" @click="$emit('toggleLoginWindows');" class="toggleIcon"/>
     <label for="username">
       Nom d'utilisateur
     </label>
@@ -58,6 +58,7 @@ const loginToAccount = async () => {
 #loginForm {
   padding: 2%;
   width: 30em;
+  z-index: 3000;
 //height: 20%;
   display: flex;
   flex-direction: column;

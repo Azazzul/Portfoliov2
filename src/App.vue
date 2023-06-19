@@ -5,6 +5,8 @@ import Login from "./components/login/login.vue";
 import Contact from "./components/contact.vue";
 import Presentation from "./components/Presentation.vue";
 import PresentationWindow from "./components/PresentationWindow.vue";
+import Profil from "./components/profil.vue";
+import Projects from "./components/projets/projects.vue";
 
 
 enum activated {
@@ -22,23 +24,32 @@ const isLogged = ref(false);
 const isLoginIn = ref(false);
 const isMainPageDisplayed = ref(true);
 const isPresDisplayed = ref(false);
+const isPresWindowsDisplayed = ref(false);
 const isParcoursDisplayed = ref(false);
 const isSkillDisplayed = ref(false);
 const isProjectDisplayed = ref(false);
 const isContactDisplayed = ref(false);
 const launchOk = ref(false)
+const isPictureDisplayed = ref(false)
+
+const isClickable = ref(true);
 
 
+const toggleClickable = () => isClickable.value = !isClickable;
 const openConnexionScreen = () => {
-  if (!isLogged?.value) {
+  if (!isLogged?.value && isClickable) {
+    toggleClickable();
     isLoginIn.value = true;
-  } else {
+  } else if (isClickable){
     isLogged.value = false;
   }
 }
 
 const togglePres = () => {
   isPresDisplayed.value = !isPresDisplayed.value;
+}
+const togglePresWindows = () => {
+  isPresWindowsDisplayed.value = !isPresWindowsDisplayed.value;
 }
 
 const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
@@ -82,6 +93,9 @@ onMounted(async () => {
   await waitDelay(1000);
   switchDisplayedPart(activated.pres);
   launchOk.value = true;
+  await waitDelay(1000);
+  isPictureDisplayed.value = true;
+
 });
 
 </script>
@@ -98,9 +112,11 @@ onMounted(async () => {
       <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>
     </div>
   </div>
-  <Presentation v-show="isPresDisplayed" @togglePres="togglePres"></Presentation>
-  <presentation-window v-show="!isPresDisplayed && launchOk " @togglePres="togglePres"></presentation-window>
+  <projects></projects>
+  <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows" ></Presentation>
+  <presentation-window v-show="isPresWindowsDisplayed && launchOk " @togglePres="togglePresWindows"></presentation-window>
   <contact></contact>
+  <profil v-show="isPictureDisplayed"></profil>
 </template>
 
 <style scoped>
@@ -150,8 +166,7 @@ texte gliche
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
-  //letter-spacing: 3px;
-  z-index: 1;
+//letter-spacing: 3px; z-index: 1;
 }
 
 .glitch:before {

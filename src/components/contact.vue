@@ -36,7 +36,7 @@ h2{
   background-color: black;
   color: lawngreen;
   padding: 2em;
-  width: 30em;
+  width: 26em;
   bottom: 1em;
   right: 1em;
   display: flex;

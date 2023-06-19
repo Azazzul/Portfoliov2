@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 
-const isReduced = ref(false);
+const isReduced = ref(true);
 
 const toggleReduced = () => {
   isReduced.value = !isReduced.value;
@@ -11,19 +11,23 @@ const toggleReduced = () => {
 <template>
   <div id="presentation" class="popup" :class="{ 'is-reduced': isReduced }">
     <img src="../assets/minus-solid.svg" alt="-" class="toggleIcon" v-show="!isReduced" @click="toggleReduced">
-    <img src="../assets/x-solid.svg" alt="-" class="toggleIcon" v-show="isReduced" @click="toggleReduced">
+    <img src="../assets/plus-solid.svg" alt="-" class="toggleIcon" v-show="isReduced" @click="toggleReduced">
     <h2>
       A propos de moi
     </h2>
     <span id="textPresentationPopup" v-show="!isReduced">
-      Je m'appelle Benoit Fardoux,
-      J'ai premièrement effectué un Baccalauréat Professionnel Système Numérique spécialisé en réseaux et en Systèmes au Lycée du Pays de Saint Omer (ou LYPSO), pendant cette période j'ai effectué 22 semaine de stage dans différents domaines comme l'éléctronique l'informatique ou même la papeterie, stage qui par ailleur a été éffectué à Fabriano en Italie avec le programme Erasmus. <br>
-      J'ai ensuite effectué un Diplome Universitaire Technologique à l'IUT de Lens, formation pendant laquelle j'ai beaucoup approfondi mes connaissances en informatique et ou j'ai effectué un stage de 8 semaine à Paris chez Zola où j'étais développeur Fullstack.
-
+      Bonjour ! Je m'appelle Benoit Fardoux.
+      Concernant mon parcours, j'ai tout d'abord passé un Baccalauréat Professionnel Systèmes Numériques spécialisé en réseaux et en Systèmes au
+      Lycée du Pays de Saint Omer (ou LYPSO). Pendant cette période, j'ai effectué 22 semaines de stage dans différents
+      domaines comme l'éléctronique,l'informatique ou encore la papeterie, stage réalisé à Fabriano
+      en Italie avec le programme Erasmus. <br>
+      Ensuite, j'ai pu obtenir un Diplôme Universitaire Technologique à l'IUT de Lens, formation pendant laquelle
+      j'ai beaucoup approfondi mes connaissances en informatique et où j'ai effectué un stage de 8 semaines à Paris
+      chez Zola où j'étais développeur Fullstack.
       <br>
     </span>
 
-    <button class="knowMore" @click="$emit('togglePres')"> en savoir plus</button>
+    <button class="knowMore" @click="$emit('togglePres')"> En savoir plus</button>
   </div>
 </template>
 

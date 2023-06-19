@@ -5,7 +5,7 @@ import {API} from '../Utils.ts';
 const hasError = ref(false);
 const username = ref("");
 const password = ref("");
-const emits = defineEmits(['toggleLoggedIn', 'toggleLoginWindows', 'openConnexionScreen']);
+const emits = defineEmits(['toggleLoggedIn', 'toggleLoginWindows', 'openConnexionScreen','toggleClickable']);
 
 
 /**
@@ -26,6 +26,7 @@ const loginToAccount = async () => {
     if (response.ok) {
       emits('toggleLoggedIn')
       emits('toggleLoginWindows');
+      emits('toggleClickable')
     }
     return response.json();
   }).then((res) => {

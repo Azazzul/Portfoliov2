@@ -36,10 +36,10 @@ onMounted(async () => {
     <h3>
       {{ toDisplay[0]?.title }}
     </h3>
-    <img :src="toDisplay[0]?.images" alt="image projet"/>
+    <img :src="'../../..' + toDisplay[0]?.images" alt="image projet"/>
     <p>{{ toDisplay[0]?.desc }}</p>
     <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
-    <button class="knowMore">En savoir plus sur le projet</button>
+    <button class="knowMore" @click="$emit('toggleProject')">En savoir plus sur le projet</button>
   </div>
 </template>
 

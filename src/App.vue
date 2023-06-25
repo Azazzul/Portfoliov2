@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue";
-import {waitDelay} from "./components/Utils.ts";
+import {API, waitDelay} from "./components/Utils.ts";
 import Login from "./components/login/login.vue";
 import Contact from "./components/contact.vue";
 import Presentation from "./components/Presentation.vue";
 import PresentationWindow from "./components/PresentationWindow.vue";
 import Profil from "./components/profil.vue";
 import Projects from "./components/projets/projects.vue";
+import ProjetWindows from "./components/projets/ProjetWindows.vue";
 
 
 enum activated {
@@ -31,17 +32,26 @@ const isProjectDisplayed = ref(false);
 const isContactDisplayed = ref(false);
 const launchOk = ref(false)
 const isPictureDisplayed = ref(false)
-
+const allProjects = ref([]);
 const isClickable = ref(true);
-
+const toOpenProject = ref(1);
 
 const toggleClickable = () => isClickable.value = !isClickable;
 const openConnexionScreen = () => {
   if (!isLogged?.value && isClickable) {
     toggleClickable();
     isLoginIn.value = true;
-  } else if (isClickable){
+  } else if (isClickable) {
     isLogged.value = false;
+  }
+}
+const openProjectScreen = (id : number) =>   {
+  toOpenProject.value = id;
+  if (!isProjectDisplayed.value && isClickable){
+    toggleClickable()
+    isProjectDisplayed.value = true
+  }else {
+    isProjectDisplayed.value = false;
   }
 }
 
@@ -88,15 +98,31 @@ const switchDisplayedPart = (name: string) => {
   console.log(isProjectDisplayed.value)
 }
 
+const updateProjects =  async () => {
+  fetch(API + '?action=projets', {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'GET'
+  }).then(async (res: Response) => {
+    if (res.ok) {
+      allProjects["value"] = await res.json();
+      console.log(allProjects.value)
+    } else {
+      throw Error();
+    }
+  })
+}
 
 onMounted(async () => {
+  await updateProjects();
   await waitDelay(1000);
   switchDisplayedPart(activated.pres);
   launchOk.value = true;
   await waitDelay(1000);
   isPictureDisplayed.value = true;
-
 });
+// console.log(experien)
 
 </script>
 
@@ -112,9 +138,11 @@ onMounted(async () => {
       <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>
     </div>
   </div>
-  <projects></projects>
-  <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows" ></Presentation>
-  <presentation-window v-show="isPresWindowsDisplayed && launchOk " @togglePres="togglePresWindows"></presentation-window>
+  <projects @toggleProject="openProjectScreen"></projects>
+  <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
+  <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
+  <presentation-window v-show="isPresWindowsDisplayed && launchOk "
+                       @togglePres="togglePresWindows" ></presentation-window>
   <contact></contact>
   <profil v-show="isPictureDisplayed"></profil>
 </template>

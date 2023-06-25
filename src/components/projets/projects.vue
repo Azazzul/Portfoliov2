@@ -2,11 +2,12 @@
 
 
 import {onMounted, ref} from "vue";
-import {API} from "../Utils.ts";
+import {API, projet} from "../Utils.ts";
 
 const isLoading = ref(true);
 const hasError = ref(false);
-const toDisplay = ref({});
+let toDisplay :any;
+toDisplay = ref({});
 
 onMounted(async () => {
   fetch(API + '?action=lastProject', {
@@ -17,7 +18,8 @@ onMounted(async () => {
   }).then(async (res: Response) => {
     isLoading.value = false;
     if (res.ok) {
-      toDisplay.value = await res.json();
+      toDisplay["value"] = await res.json();
+      console.log(toDisplay.value)
     } else {
       throw Error();
     }
@@ -34,9 +36,9 @@ onMounted(async () => {
     <h3>
       {{ toDisplay[0]?.title }}
     </h3>
-    <img :src="'../../../' + toDisplay[0]?.images" alt="image projet"/>
+    <img :src="toDisplay[0]?.images" alt="image projet"/>
     <p>{{ toDisplay[0]?.desc }}</p>
-    <a :href="toDisplay[0]?.lien"> <img src="../../assets/github.svg" alt="github icon"></a>
+    <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
     <button class="knowMore">En savoir plus sur le projet</button>
   </div>
 </template>
@@ -45,7 +47,7 @@ onMounted(async () => {
 div {
   position: fixed;
   top: 5em;
-  right: 5em;
+  right: 10em;
   padding: 1em;
   display: flex;
   flex-direction: column;

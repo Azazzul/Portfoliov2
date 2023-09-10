@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { defineProps } from 'vue';
 
 const props = defineProps(['projets']);
 const current = ref(0);
@@ -19,12 +18,12 @@ const previousItem = () => {
 <template>
   <div class="popup div-centree">
     <img src="../../assets/x-solid.svg" alt="X" class="toggleIcon" @click="$emit('toggleProject')">
-    <div v-for="(prop, index) in props.projets" :key="index" v-show="index === current">
+    <div class="content" v-for="(prop, index) in props.projets" :key="index" v-show="index === current">
       <!-- Contenu de chaque élément -->
       <h2>{{ prop?.title }}</h2>
       <h3 v-if="prop?.client !== undefined">Projet réalisé pour {{ prop?.client }}</h3>
       <p>réalisé le {{ prop.dates }}</p>
-      <img src="../../assets/screenshot/lab1.png" alt="">
+      <img :src="prop?.images" alt="trest">
       <!-- <img :src="prop.images" alt="image projet"> -->
       <p>{{ prop.description }}</p>
       <a :href="prop.lien">
@@ -38,25 +37,32 @@ const previousItem = () => {
 </template>
 
 <style scoped>
-.div-centree{
+.div-centree {
   z-index: 2000;
-  max-height: 80%}
+  max-height: 80%;
+  overflow-y: auto; /* Ajout de la propriété overflow-y avec la valeur auto */
+  backdrop-filter: blur(200px);
+}
+
 img[alt='github icon'] {
-//margin-right: 2em; width: 32px;
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(116deg) brightness(99%) contrast(102%);
+  height: 32px;
 }
 
 img[alt='image projet'] {
   max-height: 10em;
   margin-bottom: 0.5em;
 }
-.knowMore{
-    margin: 0.5em;
+
+.knowMore {
+  margin: 0.5em;
 }
-.popup{
+
+.popup {
   padding: 1.5em;
 }
-button{
 
+.content {
+  margin-bottom: 1em; /* Ajout d'une marge inférieure pour séparer les éléments */
 }
 </style>

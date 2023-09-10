@@ -5,17 +5,19 @@
   <div class="popup div-centree">
     <img src="../assets/x-solid.svg" alt="X" class="toggleIcon" @click="$emit('togglePres')">
     <h2>Présentation</h2>
-    Bonjour ! Je m'appelle Benoit Fardoux.
-    Concernant mon parcours, j'ai tout d'abord passé un Baccalauréat Professionnel Systèmes Numériques spécialisé en
+    <p>Bonjour ! Je m'appelle Benoit Fardoux. </p>
+    <p>Concernant mon parcours, j'ai tout d'abord passé un Baccalauréat Professionnel Systèmes Numériques spécialisé en
     réseaux et en Systèmes au
     Lycée du Pays de Saint Omer (ou LYPSO). Pendant cette période, j'ai effectué 22 semaines de stage dans différents
     domaines comme l'éléctronique,l'informatique ou encore la papeterie, stage réalisé à Fabriano
-    en Italie avec le programme Erasmus. <br>
+      en Italie avec le programme Erasmus. </p>
+    <p>
     Ensuite, j'ai pu obtenir un Diplôme Universitaire Technologique à l'IUT de Lens, formation pendant laquelle
     j'ai beaucoup approfondi mes connaissances en informatique et où j'ai effectué un stage de 8 semaines à Paris
-    chez Zola où j'étais développeur Fullstack.
+    chez Zola où j'étais développeur Fullstack. Suite à cette année j'ai réalisé une année d'alternance chez Worldline.
+    </p>
     <h2>Mes passions </h2>
-    Magic the gatering
+    MTG
     guitare
     orfeivrerie
     Jeux Vidéo

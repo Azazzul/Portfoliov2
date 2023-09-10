@@ -8,6 +8,8 @@ import PresentationWindow from "./components/PresentationWindow.vue";
 import Profil from "./components/profil.vue";
 import Projects from "./components/projets/projects.vue";
 import ProjetWindows from "./components/projets/ProjetWindows.vue";
+import AddProject from "./components/addProject.vue";
+import AddProjectWindows from "./components/projets/addProjectWindows.vue";
 
 
 enum activated {
@@ -34,7 +36,11 @@ const launchOk = ref(false)
 const isPictureDisplayed = ref(false)
 const allProjects = ref([]);
 const isClickable = ref(true);
+
+const isAddProjectWindowDisplayed = ref(false)
 const toOpenProject = ref(1);
+
+
 
 const toggleClickable = () => isClickable.value = !isClickable;
 const openConnexionScreen = () => {
@@ -43,6 +49,14 @@ const openConnexionScreen = () => {
     isLoginIn.value = true;
   } else if (isClickable) {
     isLogged.value = false;
+  }
+}
+const toggleAddProjectWindow= () => {
+  if (!isAddProjectWindowDisplayed?.value && isClickable) {
+    toggleClickable();
+    isAddProjectWindowDisplayed.value = true;
+  } else if (isClickable) {
+    isAddProjectWindowDisplayed.value = false;
   }
 }
 const openProjectScreen = (id : number) =>   {
@@ -61,7 +75,6 @@ const togglePres = () => {
 const togglePresWindows = () => {
   isPresWindowsDisplayed.value = !isPresWindowsDisplayed.value;
 }
-
 const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
 const toggleLoggedIn = () => isLogged.value = !isLogged.value;
 const switchDisplayedPart = (name: string) => {
@@ -127,17 +140,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <login v-show="isLoginIn" @toggleLoginWindows="toggleLoginWindows" @toggleLoggedIn="toggleLoggedIn"></login>
+<!--  <login v-show="isLoginIn" @toggleLoginWindows="toggleLoginWindows" @toggleLoggedIn="toggleLoggedIn"></login>-->
+<!--  <add-project @toggleAddWindows="toggleAddProjectWindow" v-if="!isLogged"></add-project>-->
+<!--  <add-project-windows v-if="isAddProjectWindowDisplayed" @UpdateProject="updateProjects"></add-project-windows>-->
   <div id="Name" class="div-centree">
     <h1>Benoit Fardoux</h1>
-    <h2>Apprenti ingénieur spécialisé en informatique</h2>
+    <h2>Développeur</h2>
   </div>
-  <div id="login" @click="openConnexionScreen()">
-    <div class="glitch-wrapper">
-      <div class="glitch" data-text="Se connecter" v-show="!isLogged">Se connecter</div>
-      <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>
-    </div>
-  </div>
+<!--  <div id="login" @click="openConnexionScreen()">-->
+<!--    <div class="glitch-wrapper">-->
+<!--      <div class="glitch" data-text="Se connecter" v-show="!isLogged">Se connecter</div>-->
+<!--      <div class="glitch" data-text="Se déconnecter" v-show="isLogged">Se déconnecter</div>-->
+<!--    </div>-->
+<!--  </div>-->
   <projects @toggleProject="openProjectScreen"></projects>
   <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
   <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
@@ -203,7 +218,7 @@ texte gliche
   top: 0;
   left: -2px;
   width: 100%;
-  color: 30px;
+  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -216,7 +231,7 @@ texte gliche
   top: 0;
   left: 2px;
   width: 100%;
-  color: 30px;
+  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);

@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue';
 import { copy } from 'vite-plugin-copy';
 
 export default defineConfig({
+  base: './',
+
   plugins: [
     vue(),
     copy({

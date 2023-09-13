@@ -15,8 +15,8 @@ import axios from 'axios'
 // };
 
 export const API : string = "http://localhost/api/";
-const API_KEY='c55ed287441f9329c4d1831910fdefc8'
-const SECRET_KEY='e1dddca206ca52de3e9902de8d7aaa1f'
+const API_KEY=''
+const SECRET_KEY=''
 export const sendMail = async (email : string, message : string)=>{
     const data : any = JSON.stringify({
     "Messages": [{

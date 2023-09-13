@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { sendMail } from './Utils';
 
+  const email : string= "";
+  const emailText :string = "";
+  const send = () => {
+      sendMail(email,emailText);
+  }
 </script>
 
 <template>
@@ -8,16 +14,15 @@
     <label for="email">
       Adresse email
     </label>
-    <div><span> ><span class="blink">_</span></span> <input type="email" id="email" name="email"
-                                                            placeholder="Adresse email"></div>
+    <div><span><span class="blink">_</span></span> <input v-model="email" type="email" id="email" name="email" placeholder="Adresse email"></div>
     <div>
       <label for="content">Contenu du mail</label>
       <br>
       <span id="beforeArea"> ><span class="blink">_</span></span>
-      <textarea id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
+      <textarea v-model="emailText" id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
                 cols="50"></textarea>
     </div>
-    <button>Envoyer mail</button>
+    <button :on-click="send">Envoyer mail</button>
   </div>
 </template>
 

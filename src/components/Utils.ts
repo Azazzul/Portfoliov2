@@ -1,7 +1,7 @@
 // URL of API to get the project and professionnal experiences
 
 import { config } from "@fortawesome/fontawesome-svg-core";
-
+import axios from 'axios'
 // type Experiences = {
 //     id: number,
 //     title: string,
@@ -33,10 +33,9 @@ export const sendMail = async (email : string, message : string)=>{
         headers: {'Content-Type': 'application/json'},
         auth: {username: API_KEY, password: SECRET_KEY},
       };
-  };
 
-  await fetch('https://api.mailjet.com/v3.1/send',config)
-
+  return axios(config);
+};
 
 /*
 get experience

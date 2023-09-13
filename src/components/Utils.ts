@@ -1,5 +1,7 @@
 // URL of API to get the project and professionnal experiences
 
+import { config } from "@fortawesome/fontawesome-svg-core";
+
 // type Experiences = {
 //     id: number,
 //     title: string,
@@ -13,6 +15,29 @@
 // };
 
 export const API : string = "http://localhost/api/";
+const API_KEY='c55ed287441f9329c4d1831910fdefc8'
+const SECRET_KEY='e1dddca206ca52de3e9902de8d7aaa1f'
+export const sendMail = async (email : string, message : string)=>{
+    const data : any = JSON.stringify({
+    "Messages": [{
+      "From": {"Email": "fardouxbenoit@gmail.com", "Name": "<YOUR NAME>"},
+      "To": [{"Email": "fardouxbenoit@gmail.com", "Name": name}],
+      "Subject": "Contact site vitrine",
+      "TextPart": "de" + email + message
+    }]})
+
+    const config = {
+        method: 'post',
+        url: 'https://api.mailjet.com/v3.1/send',
+        data: data,
+        headers: {'Content-Type': 'application/json'},
+        auth: {username: API_KEY, password: SECRET_KEY},
+      };
+  };
+
+  await fetch('https://api.mailjet.com/v3.1/send',config)
+
+
 /*
 get experience
  */

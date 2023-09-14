@@ -18,7 +18,7 @@ import { sendMail } from './Utils';
     <div>
       <label for="content">Contenu du mail</label>
       <br>
-      <span id="beforeArea"> ><span class="blink">_</span></span>
+      <span id="beforeArea"><span class="blink">_</span></span>
       <textarea v-model="emailText" id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
                 cols="50"></textarea>
     </div>

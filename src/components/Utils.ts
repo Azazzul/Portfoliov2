@@ -1,22 +1,11 @@
 // URL of API to get the project and professionnal experiences
 
 import { config } from "@fortawesome/fontawesome-svg-core";
-import axios from 'axios'
-// type Experiences = {
-//     id: number,
-//     title: string,
-//     company: string,
-//     images: string[],
-//     date: Date,
-//     description: string
-// }
-// type ExperiencesResult = {
-//     data: Experiences[];
-// };
 
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import keys from '../data/keys.json';
 export const API : string = "http://localhost/api/";
-const API_KEY='c55ed287441f9329c4d1831910fdefc8'
-const SECRET_KEY='e1dddca206ca52de3e9902de8d7aaa1f'
+
 export const sendMail = async (email : string, message : string)=>{
     const data : any = JSON.stringify({
     "Messages": [{
@@ -31,7 +20,7 @@ export const sendMail = async (email : string, message : string)=>{
         url: 'https://api.mailjet.com/v3.1/send',
         data: data,
         headers: {'Content-Type': 'application/json'},
-        auth: {username: API_KEY, password: SECRET_KEY},
+        auth: {username: keys.API_KEY, password: keys.SECRET_KEY},
       };
 
   return axios(config);
@@ -40,27 +29,23 @@ export const sendMail = async (email : string, message : string)=>{
 /*
 get experience
  */
-export const getProjets = async (id?: number): Promise<string> => {
+export const getProjets = async (id?: number) => {
     try {
         let request: string = API + "?action=projets";
         if (id) {
             request += "&id=" + id;
         }
-
-        const response :Response = await fetch(request, {
-            // Ajoutez les options de la requête si nécessaire, comme les en-têtes
-            headers: {
-              'Accept': 'application/json',
-            }
-        });
-
-        const status :number= response.status;
-        console.log(status);
-
-        const result = await response.json();
-        console.log(result);
-
-        return result;
+        const config : AxiosRequestConfig= {
+            headers : {'Accept': 'application/json'}
+        }
+    
+        return axios.get(request,config).then((response) => {
+            console.log(response)}
+            , (error) => {
+                console.error(error);
+                
+            });
+        
     } catch (error) {
         console.log('unexpected error: ', error);
         return 'An unexpected error occurred';

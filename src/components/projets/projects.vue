@@ -2,7 +2,7 @@
 
 
 import {onMounted, ref} from "vue";
-import {API, projet} from "../Utils.ts";
+import {API, projet} from "../Utils";
 
 const isLoading = ref(true);
 const hasError = ref(false);
@@ -33,13 +33,18 @@ onMounted(async () => {
     <h2>
       Mon dernier projet
     </h2>
-    <h3>
-      {{ toDisplay[0]?.title }}
-    </h3>
-    <img :src="'../../..' + toDisplay[0]?.images" alt="image projet"/>
-    <p>{{ toDisplay[0]?.desc }}</p>
-    <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
-    <button class="knowMore" @click="$emit('toggleProject')">En savoir plus sur le projet</button>
+    <span v-if="isLoading">
+      <img src="../../assets/gif/Loading.svg" alt="loading">
+    </span>
+    <span v-if="!isLoading">
+      <h3>
+        {{ toDisplay[0]?.title }}
+      </h3>
+      <img :src="'../../..' + toDisplay[0]?.images" alt="image projet"/>
+      <p>{{ toDisplay[0]?.desc }}</p>
+      <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
+      <button class="knowMore" @click="$emit('toggleProject')">En savoir plus sur le projet</button>
+    </span>
   </div>
 </template>
 
@@ -57,6 +62,7 @@ div {
 div > h2 {
   margin: 0;
 }
+
 h3{
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -67,8 +73,8 @@ p {
 }
 
 img[alt='github icon'] {
-//margin-right: 2em; width: 32px;
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(116deg) brightness(99%) contrast(102%);
+  height: 2.5em;
 }
 
 img[alt='image projet'] {

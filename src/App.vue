@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {Ref, onMounted, ref} from "vue";
 import {API, waitDelay} from "./components/Utils.ts";
 import Login from "./components/login/login.vue";
 import Contact from "./components/contact.vue";
@@ -10,6 +10,8 @@ import Projects from "./components/projets/projects.vue";
 import ProjetWindows from "./components/projets/ProjetWindows.vue";
 import AddProject from "./components/addProject.vue";
 import AddProjectWindows from "./components/projets/addProjectWindows.vue";
+import ExperiencePop from "./components/experiences/experiencePop.vue";
+import ExperienceWindows from "./components/experiences/experienceWindows.vue";
 
 
 enum activated {
@@ -36,7 +38,7 @@ const launchOk = ref(false)
 const isPictureDisplayed = ref(false)
 const allProjects = ref([]);
 const isClickable = ref(true);
-
+const isJobWindowsDisplayed : Ref<boolean>= ref(false)
 const isAddProjectWindowDisplayed = ref(false)
 const toOpenProject = ref(1);
 
@@ -75,6 +77,11 @@ const togglePres = () => {
 const togglePresWindows = () => {
   isPresWindowsDisplayed.value = !isPresWindowsDisplayed.value;
 }
+
+const toggleJob = () => {
+  isJobWindowsDisplayed.value = !isJobWindowsDisplayed.value;
+}
+
 const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
 const toggleLoggedIn = () => isLogged.value = !isLogged.value;
 const switchDisplayedPart = (name: string) => {
@@ -99,7 +106,6 @@ const switchDisplayedPart = (name: string) => {
       isSkillDisplayed.value = true;
       break;
     case "project":
-      console.log("test")
       isProjectDisplayed.value = true;
       break
     case "contact":
@@ -154,6 +160,8 @@ onMounted(async () => {
 <!--    </div>-->
 <!--  </div>-->
   <projects @toggleProject="openProjectScreen"></projects>
+  <ExperiencePop @toggleJob="toggleJob"></ExperiencePop>
+  <ExperienceWindows v-show="isJobWindowsDisplayed" @toggleJob="toggleJob"> </ExperienceWindows>
   <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
   <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
   <presentation-window v-show="isPresWindowsDisplayed && launchOk "

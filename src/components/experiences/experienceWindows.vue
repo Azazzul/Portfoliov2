@@ -5,7 +5,6 @@
 <template>
 <div class="popup div-centree">
     <img src="../../assets/x-solid.svg" alt="X" class="toggleIcon" @click="$emit('toggleJob')">
-
 </div>
 </template>
 

@@ -60,11 +60,9 @@ const loginToAccount = async () => {
   padding: 2%;
   width: 30em;
   z-index: 3000;
-//height: 20%;
   display: flex;
   flex-direction: column;
-//background-color: white; backdrop-filter: blur(10px);
-//width: 30%; text-align: left;
+  text-align: left;
 }
 
 #loginForm label {

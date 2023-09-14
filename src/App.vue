@@ -209,7 +209,6 @@ texte gliche
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
-//letter-spacing: 3px; z-index: 1;
 }
 
 .glitch:before {
@@ -218,7 +217,6 @@ texte gliche
   top: 0;
   left: -2px;
   width: 100%;
-  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -231,7 +229,6 @@ texte gliche
   top: 0;
   left: 2px;
   width: 100%;
-  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);

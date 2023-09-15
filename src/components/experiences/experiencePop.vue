@@ -6,7 +6,7 @@ import { ref, onMounted, Ref } from 'vue';
 const isLoading : Ref<boolean> = ref(true);
 const toDisplay : Ref<any> = ref({})
 onMounted(async () => {
-    const config = {headers: {
+    const config : AxiosRequestConfig = {headers: {
       'Content-Type': 'application/json',
     }}
 
@@ -14,10 +14,9 @@ onMounted(async () => {
   axios.get('https://swapi.dev/api/films/1/',config)
   .then(async (res : AxiosResponse) => {
     isLoading.value = false;
-    if (res) {
-      toDisplay["value"] = res.data.json();
-      console.log(toDisplay.value)
-    }
+    toDisplay.value = res.data;
+  //  console.log(toDisplay.value);
+    
   }), (error : AxiosError) => {
     console.error(error)
   } 
@@ -39,7 +38,7 @@ onMounted(async () => {
       </h3>
       <img :src="toDisplay[0]?.images" alt="image projet"/>
       <p>{{ toDisplay[0]?.desc }}</p>
-      <button class="knowMore" @click="$emit('toggleJob')">En savoir plus sur le projet</button>
+      <button class="knowMore" @click="$emit('toggleJob')">En savoir plus sur ce job</button>
     </span>
   </div>
 </template>
@@ -48,7 +47,7 @@ onMounted(async () => {
 div {
   position: fixed;
   bottom: 5em;
-  left: 10em;
+  left: 5em;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -68,6 +67,7 @@ h3{
 p {
   margin: 0;
 }
+
 
 img[alt='github icon'] {
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(116deg) brightness(99%) contrast(102%);

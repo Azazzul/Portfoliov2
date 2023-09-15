@@ -2,6 +2,7 @@
 import {Ref, onMounted, ref} from "vue";
 import {API, waitDelay} from "./components/Utils.ts";
 import Login from "./components/login/login.vue";
+import langages from "./components/langages/langages.vue";
 import Contact from "./components/contact.vue";
 import Presentation from "./components/Presentation.vue";
 import PresentationWindow from "./components/PresentationWindow.vue";
@@ -161,6 +162,7 @@ onMounted(async () => {
 <!--  </div>-->
   <projects @toggleProject="openProjectScreen"></projects>
   <ExperiencePop @toggleJob="toggleJob"></ExperiencePop>
+  <langages></langages>
   <ExperienceWindows v-show="isJobWindowsDisplayed" @toggleJob="toggleJob"> </ExperienceWindows>
   <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
   <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
@@ -200,7 +202,7 @@ onMounted(async () => {
 
 
 /*
-texte gliche
+texte glitch
  */
 .glitch-wrapper {
   width: 100%;

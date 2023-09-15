@@ -27,6 +27,7 @@ const toggleReduced = () => {
     </span>
 
     <button class="knowMore" @click="$emit('togglePres')"> En savoir plus</button>
+    <a class="knowMore" href="https://drive.google.com/file/d/1ewXq1WN-i9q8SloEkGsuHsk7wua-dWPU/view?usp=sharing" target="_blank"> CV</a>
   </div>
 </template>
 
@@ -42,6 +43,9 @@ const toggleReduced = () => {
   left: 3em;
   padding: 1.5em;
   width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 0;
   border: solid 2px;
 }
@@ -58,8 +62,10 @@ h2 {
   margin-top: 1em;
   padding-right: 1em;
   padding-left: 1em;
+  border-radius: 8px ;
   background: none;
   color: white;
   border: white solid 2px;
 }
+
 </style>

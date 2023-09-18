@@ -4,23 +4,34 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import {API} from '../Utils'
 
 const data : Ref<any>= ref({});
+const displayedData : Ref<any>= ref({});
 const isLoading : Ref<boolean> = ref(true);
 const current :Ref<Array<number>>  = ref([1,2,3]);
-const numberOfLangages : Ref<number>= ref(0)
+const numberOfLangages : Ref<number>= ref(100)
 const goNext = () => {
-    current.value.map((x) => {
-        if (x == numberOfLangages.value) {
-          return 0
-        }
-        return x+1
+  if (current.value[2] != numberOfLangages.value-1){
+    const tmp : Array<number> = [];
+
+    current.value.forEach((x,index) => {
+      tmp[index] = x+1;
+      displayedData.value[index] = data.value[x] 
     })
+    current.value = tmp;
+  }
+  console.log(current.value)
 }
 
 const goBack = () => {
-  current.value.map((x) => {
-    if (x == 0) return numberOfLangages.value;
-    return x-1
-  })
+  if (current.value[0] != 0){
+    const tmp : Array<number> = [];
+
+    current.value.forEach((x,index) => {
+      tmp[index] = x-1;
+      displayedData.value[index] = data.value[x] 
+    })
+    current.value = tmp;
+  }
+  console.log(current.value)
 }
 
 onMounted(async ()=>{
@@ -28,12 +39,16 @@ onMounted(async ()=>{
       'Content-Type': 'application/json',
     }};
     //axios.get(API + '?action=getLangage',config)
-    axios.get('https://swapi.dev/api/films/1/',config)
+    axios.get('https://swapi.dev/api/films/',config)
     .then((res : AxiosResponse) => {
-      data.value = res.data;
+      data.value = res.data.results;
+      data.value.name = "vue 3"
+      displayedData.value = [data.value[0], data.value[1], data.value[2]]
       isLoading.value = false;
-      numberOfLangages.value = data.value.length
-      },
+      numberOfLangages.value = res.data.count
+      console.log(data.value)  
+      console.log(numberOfLangages.value)
+    },
     (error : AxiosError) => { console.error(error)})
 });
 
@@ -52,15 +67,18 @@ onMounted(async ()=>{
 
       <span id="language_display">
         <button @click="goBack" class="knowMore">&#8592;</button>
-        <span>
-          <h3>
-            {{ data?.title }}
+        <span v-for="(item) in displayedData"  >
+          <h3 :key="item.title">
+            {{ item.title }}
           </h3>
-          <img :src="data?.images" alt="image projet"/>
+          <img src="../../assets/vue.png" alt="image projet" style="width : 6em" :key="item.title"/>
+       <!--
+           <img :src="data?.images"  alt="image projet"/>
+       -->
+          </span>
+          <button @click="goNext" class="knowMore">&#8594;</button>
         </span>
-        <button @click="goNext" class="knowMore">&#8594;</button>
       </span>
-    </span>
 </div>
 </template>
 
@@ -79,8 +97,6 @@ div {
   padding: 1em;
   width: 30em;
   height: 10em;
-  display: flex;
-  flex-direction: column;
   max-height: 20em;
 }
 

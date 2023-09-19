@@ -14,11 +14,13 @@ const goNext = () => {
 
     current.value.forEach((x,index) => {
       tmp[index] = x+1;
-      displayedData.value[index] = data.value[x] 
+      displayedData.value[index] = data.value[x+1] 
     })
     current.value = tmp;
   }
+  console.log("current =")
   console.log(current.value)
+  console.log(data.value)
 }
 
 const goBack = () => {
@@ -27,11 +29,12 @@ const goBack = () => {
 
     current.value.forEach((x,index) => {
       tmp[index] = x-1;
-      displayedData.value[index] = data.value[x] 
+      displayedData.value[index] = data.value[x-1] 
     })
     current.value = tmp;
   }
-  console.log(current.value)
+  console.log(data.value)
+  console.log(displayedData.value)
 }
 
 onMounted(async ()=>{
@@ -39,15 +42,14 @@ onMounted(async ()=>{
       'Content-Type': 'application/json',
     }};
     //axios.get(API + '?action=getLangage',config)
-    axios.get('https://swapi.dev/api/films/',config)
+    axios.get('http://127.0.0.1:4975/api/skill/',config)
     .then((res : AxiosResponse) => {
-      data.value = res.data.results;
-      data.value.name = "vue 3"
-      displayedData.value = [data.value[0], data.value[1], data.value[2]]
+      data.value = res.data.data;
+      numberOfLangages.value = res.data.data.length;
+      displayedData.value = [data.value[0],data.value[1],data.value[2]];
       isLoading.value = false;
-      numberOfLangages.value = res.data.count
-      console.log(data.value)  
-      console.log(numberOfLangages.value)
+      console.log(data.value);
+      console.log(numberOfLangages.value);
     },
     (error : AxiosError) => { console.error(error)})
 });
@@ -68,10 +70,10 @@ onMounted(async ()=>{
       <span id="language_display">
         <button @click="goBack" class="knowMore">&#8592;</button>
         <span v-for="(item) in displayedData"  >
-          <h3 :key="item.title">
-            {{ item.title }}
+          <h3 :key="item.id">
+            {{ item.name }}
           </h3>
-          <img src="../../assets/vue.png" alt="image projet" style="width : 6em" :key="item.title"/>
+          <img :src="item.image" alt="image projet" style="height : 5em" :key="item.id"/>
        <!--
            <img :src="data?.images"  alt="image projet"/>
        -->

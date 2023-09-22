@@ -4,27 +4,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import keys from '../data/keys.json';
-export const API : string = "http://localhost/api/";
-
-export const sendMail = async (email : string, message : string)=>{
-    const data : any = JSON.stringify({
-    "Messages": [{
-      "From": {"Email": "fardouxbenoit@gmail.com", "Name": "<YOUR NAME>"},
-      "To": [{"Email": "fardouxbenoit@gmail.com", "Name": name}],
-      "Subject": "Contact site vitrine",
-      "TextPart": "de" + email + message
-    }]})
-
-    const config = {
-        method: 'post',
-        url: 'https://api.mailjet.com/v3.1/send',
-        data: data,
-        headers: {'Content-Type': 'application/json'},
-        auth: {username: keys.API_KEY, password: keys.SECRET_KEY},
-      };
-
-  return axios(config);
-};
+export const API : string = "http://127.0.0.1:4975/api/";
 
 /*
 get experience

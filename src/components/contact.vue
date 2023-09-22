@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { sendMail } from './Utils';
 
   const emailText :string = "";
   const send = () => {
@@ -37,9 +36,9 @@ h2{
   background-color: black;
   color: lawngreen;
   padding: 2em;
-  width: 26em;
-  bottom: 1em;
-  right: 1em;
+  width: 28.2%;
+  bottom: 0.5em;
+  right: 0.5em;
   display: flex;
   flex-direction: column;
 }

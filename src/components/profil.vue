@@ -11,15 +11,16 @@
 <style scoped>
 .popup{
   position: fixed;
-  top: 5em;
-  right: 28em;
-  padding: 0.5em;
+  top: 0.5em;
+  left: 40.4%;
+  transform: translate(-50%, 0);
+  padding: 0em;
   display: flex;
-  border-radius: 0;
+  border-radius: 8PX;
   background-color: rgba(255, 255, 255, 0.42);
 }
 .popup img{
-  max-width: 11em;
+  max-width: 11.5em;
 }
 
 </style>

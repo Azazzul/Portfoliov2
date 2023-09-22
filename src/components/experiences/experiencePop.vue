@@ -11,10 +11,10 @@ onMounted(async () => {
     }}
 
   //axios.get(API + '?action=lastJob',config)
-  axios.get('https://swapi.dev/api/films/1/',config)
-  .then(async (res : AxiosResponse) => {
+  axios.get(API + 'jobs/',config)
+  .then((res : AxiosResponse) => {
     isLoading.value = false;
-    toDisplay.value = res.data;
+    toDisplay.value = res.data.data[0];
   //  console.log(toDisplay.value);
     
   }), (error : AxiosError) => {
@@ -36,9 +36,9 @@ onMounted(async () => {
       <h3>
         {{ toDisplay?.title }}
       </h3>
-      <img :src="toDisplay[0]?.images" alt="image projet"/>
-      <p>{{ toDisplay[0]?.desc }}</p>
-      <button class="knowMore" @click="$emit('toggleJob')">En savoir plus sur ce job</button>
+      <img :src="toDisplay?.image" alt="image projet"/>
+      <p>{{ toDisplay?.job_description }}</p>
+      <button class="knowMore" @click="$emit('toggleJob')">En savoir plus</button>
     </span>
   </div>
 </template>
@@ -46,13 +46,13 @@ onMounted(async () => {
 <style scoped>
 div {
   position: fixed;
-  bottom: 5em;
-  left: 5em;
+  top: 0.5em;
+  right: 0.5em;
   padding: 1em;
   display: flex;
   flex-direction: column;
-  max-height: 20em;
-  width: 20em;
+  height: 59%;
+  width: 30.2%;
 }
 
 span > h2 {

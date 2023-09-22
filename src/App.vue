@@ -152,7 +152,7 @@ onMounted(async () => {
 <!--  <add-project-windows v-if="isAddProjectWindowDisplayed" @UpdateProject="updateProjects"></add-project-windows>-->
   <div id="Name" class="div-centree">
     <h1>Benoit Fardoux</h1>
-    <h2>Développeur</h2>
+    <h2>Développeur <br>en recherche d'alternance</h2>
   </div>
 <!--  <div id="login" @click="openConnexionScreen()">-->
 <!--    <div class="glitch-wrapper">-->
@@ -177,7 +177,10 @@ onMounted(async () => {
   border: solid white;
   color: white;
   border-radius: 8px;
-  padding: 2em;
+  width: 30em;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
 }
 
 

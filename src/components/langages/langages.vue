@@ -60,7 +60,7 @@ onMounted(async ()=>{
 <template>
 <div class="popup">
     <h2>
-      langages et outils
+      Langages & Outils
     </h2>
     <span v-if="isLoading">
       <img src="../../assets/gif/Loading.svg" alt="loading">
@@ -94,11 +94,13 @@ onMounted(async ()=>{
 
 div {
   position: fixed;
-  bottom: 1em;
-  right: 32em;
+  bottom: 0.5em;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
   padding: 1em;
-  width: 30em;
-  height: 10em;
+  width: 29%;
+  height: 10.99em;
   max-height: 20em;
 }
 

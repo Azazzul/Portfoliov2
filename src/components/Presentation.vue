@@ -27,6 +27,7 @@ const toggleReduced = () => {
     </span>
 
     <button class="knowMore" @click="$emit('togglePres')"> En savoir plus</button>
+    <a class="knowMore" href="https://drive.google.com/file/d/1ewXq1WN-i9q8SloEkGsuHsk7wua-dWPU/view?usp=sharing" target="_blank"> CV</a>
   </div>
 </template>
 
@@ -37,17 +38,21 @@ const toggleReduced = () => {
   transition: max-height 0.5s ease; /* Spécifie la durée et la fonction de transition */
   max-height: 1000px; /* Hauteur maximale de la div */
   position: fixed;
-  top: 2em;
-  background: rgba(255,255,255,7%);
-  left: 3em;
-  padding: 1.5em;
-  width: 25%;
-  border-radius: 0;
-  border: solid 2px;
+  top: 0.5em;
+  left: 0.5em;
+ /*background: rgba(255,255,255,7%);*/
+  padding: 1em;
+  width: 30.2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  
 }
 
 #presentation.is-reduced {
-  max-height: 200px; /* Hauteur réduite de la div */
+  max-height: 33%; /* Hauteur réduite de la div */
+
 }
 
 h2 {
@@ -58,8 +63,10 @@ h2 {
   margin-top: 1em;
   padding-right: 1em;
   padding-left: 1em;
+  border-radius: 8px ;
   background: none;
   color: white;
   border: white solid 2px;
 }
+
 </style>

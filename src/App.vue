@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {Ref, onMounted, ref} from "vue";
 import {API, waitDelay} from "./components/Utils.ts";
 import Login from "./components/login/login.vue";
+import langages from "./components/langages/langages.vue";
 import Contact from "./components/contact.vue";
 import Presentation from "./components/Presentation.vue";
 import PresentationWindow from "./components/PresentationWindow.vue";
@@ -10,6 +11,8 @@ import Projects from "./components/projets/projects.vue";
 import ProjetWindows from "./components/projets/ProjetWindows.vue";
 import AddProject from "./components/addProject.vue";
 import AddProjectWindows from "./components/projets/addProjectWindows.vue";
+import ExperiencePop from "./components/experiences/experiencePop.vue";
+import ExperienceWindows from "./components/experiences/experienceWindows.vue";
 
 
 enum activated {
@@ -36,7 +39,7 @@ const launchOk = ref(false)
 const isPictureDisplayed = ref(false)
 const allProjects = ref([]);
 const isClickable = ref(true);
-
+const isJobWindowsDisplayed : Ref<boolean>= ref(false)
 const isAddProjectWindowDisplayed = ref(false)
 const toOpenProject = ref(1);
 
@@ -75,6 +78,11 @@ const togglePres = () => {
 const togglePresWindows = () => {
   isPresWindowsDisplayed.value = !isPresWindowsDisplayed.value;
 }
+
+const toggleJob = () => {
+  isJobWindowsDisplayed.value = !isJobWindowsDisplayed.value;
+}
+
 const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
 const toggleLoggedIn = () => isLogged.value = !isLogged.value;
 const switchDisplayedPart = (name: string) => {
@@ -99,7 +107,6 @@ const switchDisplayedPart = (name: string) => {
       isSkillDisplayed.value = true;
       break;
     case "project":
-      console.log("test")
       isProjectDisplayed.value = true;
       break
     case "contact":
@@ -145,7 +152,7 @@ onMounted(async () => {
 <!--  <add-project-windows v-if="isAddProjectWindowDisplayed" @UpdateProject="updateProjects"></add-project-windows>-->
   <div id="Name" class="div-centree">
     <h1>Benoit Fardoux</h1>
-    <h2>Développeur</h2>
+    <h2>Développeur <br>en recherche d'alternance</h2>
   </div>
 <!--  <div id="login" @click="openConnexionScreen()">-->
 <!--    <div class="glitch-wrapper">-->
@@ -154,6 +161,9 @@ onMounted(async () => {
 <!--    </div>-->
 <!--  </div>-->
   <projects @toggleProject="openProjectScreen"></projects>
+  <ExperiencePop @toggleJob="toggleJob"></ExperiencePop>
+  <langages></langages>
+  <ExperienceWindows v-show="isJobWindowsDisplayed" @toggleJob="toggleJob"> </ExperienceWindows>
   <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
   <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
   <presentation-window v-show="isPresWindowsDisplayed && launchOk "
@@ -167,7 +177,10 @@ onMounted(async () => {
   border: solid white;
   color: white;
   border-radius: 8px;
-  padding: 2em;
+  width: 30em;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -192,7 +205,7 @@ onMounted(async () => {
 
 
 /*
-texte gliche
+texte glitch
  */
 .glitch-wrapper {
   width: 100%;
@@ -209,7 +222,6 @@ texte gliche
   font-size: 15px;
   font-weight: bold;
   color: #FFFFFF;
-//letter-spacing: 3px; z-index: 1;
 }
 
 .glitch:before {
@@ -218,7 +230,6 @@ texte gliche
   top: 0;
   left: -2px;
   width: 100%;
-  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
@@ -231,7 +242,6 @@ texte gliche
   top: 0;
   left: 2px;
   width: 100%;
-  //color: 30px;
   background-color: transparent;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);

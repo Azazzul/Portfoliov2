@@ -1,23 +1,23 @@
 <script setup lang="ts">
 
+  const emailText :string = "";
+  const send = () => {
+    console.log('test')
+      window.open('mailto:fardouxbenoit@gmail.com?subject=Contact&body=' + emailText);
+  }
 </script>
 
 <template>
   <div id="contactForm" class="popup">
     <h2>Me contacter :</h2>
-    <label for="email">
-      Adresse email
-    </label>
-    <div><span> ><span class="blink">_</span></span> <input type="email" id="email" name="email"
-                                                            placeholder="Adresse email"></div>
     <div>
       <label for="content">Contenu du mail</label>
       <br>
-      <span id="beforeArea"> ><span class="blink">_</span></span>
-      <textarea id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
+      <span id="beforeArea"><span class="blink">_</span></span>
+      <textarea v-model="emailText" id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
                 cols="50"></textarea>
     </div>
-    <button>Envoyer mail</button>
+    <button @click="send">Envoyer mail</button>
   </div>
 </template>
 
@@ -36,9 +36,9 @@ h2{
   background-color: black;
   color: lawngreen;
   padding: 2em;
-  width: 26em;
-  bottom: 1em;
-  right: 1em;
+  width: 28.2%;
+  bottom: 0.5em;
+  right: 0.5em;
   display: flex;
   flex-direction: column;
 }
@@ -62,9 +62,6 @@ h2{
 
 }
 
-#content {
-
-}
 
 .blink {
   animation: blink-animation 01s steps(5, start) infinite;

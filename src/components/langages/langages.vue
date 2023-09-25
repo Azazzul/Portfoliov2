@@ -42,7 +42,7 @@ onMounted(async ()=>{
       'Content-Type': 'application/json',
     }};
     //axios.get(API + '?action=getLangage',config)
-    axios.get('http://127.0.0.1:4975/api/skill/',config)
+    axios.get(API + 'skill',config)
     .then((res : AxiosResponse) => {
       data.value = res.data.data;
       numberOfLangages.value = res.data.data.length;

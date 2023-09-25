@@ -4,7 +4,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import keys from '../data/keys.json';
-export const API : string = "http://127.0.0.1:4975/api/";
+export const API : string = "https://e4vp72b84a.execute-api.eu-west-3.amazonaws.com/Prod/api/";
 
 /*
 get experience

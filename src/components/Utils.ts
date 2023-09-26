@@ -1,36 +1,7 @@
 // URL of API to get the project and professionnal experiences
 
-import { config } from "@fortawesome/fontawesome-svg-core";
-
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import keys from '../data/keys.json';
 export const API : string = "https://e4vp72b84a.execute-api.eu-west-3.amazonaws.com/Prod/api/";
 
-/*
-get experience
- */
-export const getProjets = async (id?: number) => {
-    try {
-        let request: string = API + "?action=projets";
-        if (id) {
-            request += "&id=" + id;
-        }
-        const config : AxiosRequestConfig= {
-            headers : {'Accept': 'application/json'}
-        }
-    
-        return axios.get(request,config).then((response) => {
-            console.log(response)}
-            , (error) => {
-                console.error(error);
-                
-            });
-        
-    } catch (error) {
-        console.log('unexpected error: ', error);
-        return 'An unexpected error occurred';
-    }
-};
 export interface projet{
     id : number,
     title : string,

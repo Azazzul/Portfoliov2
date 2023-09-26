@@ -63,7 +63,7 @@ onMounted(async ()=>{
       Langages & Outils
     </h2>
     <span v-if="isLoading">
-      <img src="../../assets/gif/Loading.svg" alt="loading">
+      <img src="../../assets/Loading.svg" alt="loading">
     </span>
     <span v-if="!isLoading" style="display:flex;flex-direction: column;">
 

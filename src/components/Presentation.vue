@@ -27,7 +27,7 @@ const toggleReduced = () => {
     </span>
 
     <button class="knowMore" @click="$emit('togglePres')"> En savoir plus</button>
-    <a class="knowMore" href="https://drive.google.com/file/d/1ewXq1WN-i9q8SloEkGsuHsk7wua-dWPU/view?usp=sharing" target="_blank"> CV</a>
+    <a class="knowMore" href="https://images-portfolio-fardoux.s3.eu-west-3.amazonaws.com/CV-BENOIT_2023.pdf" target="_blank"> CV</a>
   </div>
 </template>
 

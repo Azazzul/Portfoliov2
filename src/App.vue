@@ -118,24 +118,8 @@ const switchDisplayedPart = (name: string) => {
   console.log(isProjectDisplayed.value)
 }
 
-const updateProjects =  async () => {
-  fetch(API + '?action=projets', {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'GET'
-  }).then(async (res: Response) => {
-    if (res.ok) {
-      allProjects["value"] = await res.json();
-      console.log(allProjects.value)
-    } else {
-      throw Error();
-    }
-  })
-}
 
 onMounted(async () => {
-  await updateProjects();
   await waitDelay(1000);
   switchDisplayedPart(activated.pres);
   launchOk.value = true;

@@ -4,7 +4,9 @@ import { copy } from 'vite-plugin-copy';
 
 export default defineConfig({
   base: './',
-
+  build:{
+    outDir: './docs'
+  },
   plugins: [
     vue(),
     copy({

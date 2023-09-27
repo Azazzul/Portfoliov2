@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {Ref, onMounted, ref} from "vue";
 import {API, waitDelay} from "./components/Utils.ts";
-import Login from "./components/login/login.vue";
 import langages from "./components/langages/langages.vue";
 import Contact from "./components/contact.vue";
 import Presentation from "./components/Presentation.vue";
@@ -9,10 +8,9 @@ import PresentationWindow from "./components/PresentationWindow.vue";
 import Profil from "./components/profil.vue";
 import Projects from "./components/projets/projects.vue";
 import ProjetWindows from "./components/projets/ProjetWindows.vue";
-import AddProject from "./components/addProject.vue";
-import AddProjectWindows from "./components/projets/addProjectWindows.vue";
 import ExperiencePop from "./components/experiences/experiencePop.vue";
 import ExperienceWindows from "./components/experiences/experienceWindows.vue";
+import axios, { Axios, AxiosResponse } from "axios";
 
 
 enum activated {
@@ -37,31 +35,29 @@ const isProjectDisplayed = ref(false);
 const isContactDisplayed = ref(false);
 const launchOk = ref(false)
 const isPictureDisplayed = ref(false)
-const allProjects = ref([]);
 const isClickable = ref(true);
 const isJobWindowsDisplayed : Ref<boolean>= ref(false)
 const isAddProjectWindowDisplayed = ref(false)
 const toOpenProject = ref(1);
+// projets et jobs
+const allProjects = ref([]);
+const allJobs = ref([])
 
-
+onMounted(async () => {
+  const config = {headers: {
+      'Content-Type': 'application/json',
+    }};
+    axios.get(API + 'projects/',config)
+    .then((res : AxiosResponse) => {
+      allProjects.value = res.data.data;
+    })
+    axios.get(API + 'jobs/',config)
+    .then((res:AxiosResponse) => {
+      allJobs.value = res.data.data;
+    })
+});
 
 const toggleClickable = () => isClickable.value = !isClickable;
-const openConnexionScreen = () => {
-  if (!isLogged?.value && isClickable) {
-    toggleClickable();
-    isLoginIn.value = true;
-  } else if (isClickable) {
-    isLogged.value = false;
-  }
-}
-const toggleAddProjectWindow= () => {
-  if (!isAddProjectWindowDisplayed?.value && isClickable) {
-    toggleClickable();
-    isAddProjectWindowDisplayed.value = true;
-  } else if (isClickable) {
-    isAddProjectWindowDisplayed.value = false;
-  }
-}
 const openProjectScreen = (id : number) =>   {
   toOpenProject.value = id;
   if (!isProjectDisplayed.value && isClickable){
@@ -72,9 +68,6 @@ const openProjectScreen = (id : number) =>   {
   }
 }
 
-const togglePres = () => {
-  isPresDisplayed.value = !isPresDisplayed.value;
-}
 const togglePresWindows = () => {
   isPresWindowsDisplayed.value = !isPresWindowsDisplayed.value;
 }
@@ -83,8 +76,6 @@ const toggleJob = () => {
   isJobWindowsDisplayed.value = !isJobWindowsDisplayed.value;
 }
 
-const toggleLoginWindows = () => isLoginIn.value = !isLoginIn.value;
-const toggleLoggedIn = () => isLogged.value = !isLogged.value;
 const switchDisplayedPart = (name: string) => {
   isMainPageDisplayed.value = false;
   isPresDisplayed.value = false;
@@ -147,7 +138,7 @@ onMounted(async () => {
   <projects @toggleProject="openProjectScreen"></projects>
   <ExperiencePop @toggleJob="toggleJob"></ExperiencePop>
   <langages></langages>
-  <ExperienceWindows v-show="isJobWindowsDisplayed" @toggleJob="toggleJob"> </ExperienceWindows>
+  <ExperienceWindows v-show="isJobWindowsDisplayed" @toggleJob="toggleJob" :jobs="allJobs"> </ExperienceWindows>
   <projet-windows v-show="isProjectDisplayed && launchOk" :projets="allProjects" @toggleProject="openProjectScreen"></projet-windows>
   <Presentation v-show="isPresDisplayed" @togglePres="togglePresWindows"></Presentation>
   <presentation-window v-show="isPresWindowsDisplayed && launchOk "

@@ -31,8 +31,10 @@ const previousItem = () => {
       </a>
     </div>
     <!-- Boutons pour passer à l'élément suivant et revenir en arrière -->
-    <button @click="previousItem" class="knowMore">&#8592;</button>
-    <button @click="nextItem" class="knowMore">&#8594;</button>
+    <span>
+      <button @click="previousItem" class="knowMore">&#8592;</button>
+      <button @click="nextItem" class="knowMore">&#8594;</button>
+    </span>
   </div>
 </template>
 
@@ -40,6 +42,7 @@ const previousItem = () => {
 .div-centree {
   z-index: 2000;
   width: 50%;
+  height: 70%;
   max-height: 80%;
   overflow-y: auto; /* Ajout de la propriété overflow-y avec la valeur auto */
   backdrop-filter: blur(200px);
@@ -57,11 +60,14 @@ img[alt='github icon'] {
 }
 
 .knowMore {
-  margin: 0.5em;
+  margin: 1%;
 }
 
 .popup {
   padding: 1.5em;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .content {

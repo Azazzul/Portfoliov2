@@ -1,9 +1,7 @@
 <script setup lang="ts">
 
-  const emailText :string = "";
   const send = () => {
-    console.log('test')
-      window.open('mailto:fardouxbenoit@gmail.com?subject=Contact&body=' + emailText);
+      window.open('mailto:fardouxbenoit@gmail.com?subject=Contact');
   }
 </script>
 
@@ -11,20 +9,19 @@
   <div id="contactForm" class="popup">
     <h2>Me contacter :</h2>
     <div>
-      <label for="content">Contenu du mail</label>
-      <br>
-      <span id="beforeArea"><span class="blink">_</span></span>
-      <textarea v-model="emailText" id="content" name="content" placeholder="Contenu du mail" spellcheck="true" rows="4"
-                cols="50"></textarea>
+      <a href="https://www.linkedin.com/in/benoit-fardoux/" target="_blank" > <img src="../assets/linkedin.svg"
+                                                                                alt="linkedin"><span class="blink"> Linkedin  </span></a>
+      <a href="tel:0647705071"  > <img src="../assets/phone.svg"
+                                                                                alt="linkedin"><span class="blink"> +336.47.70 50.71  </span></a>
     </div>
-    <button @click="send">Envoyer mail</button>
+    <button @click="send">Envoyer un mail</button>
   </div>
 </template>
 
 <style scoped>
 #contactForm button {
   background: none;
-  border: solid lawngreen 1px;
+  border: solid #7cfc00 1px;
   color: lawngreen;
 }
 h2{
@@ -37,6 +34,7 @@ h2{
   color: lawngreen;
   padding: 2em;
   width: 28.2%;
+  height: 21.5%;
   bottom: 0.5em;
   right: 0.5em;
   display: flex;
@@ -50,6 +48,7 @@ h2{
   background-color: transparent;
   resize: none;
   width: 25em;
+  height: 10em;
 
 }
 
@@ -62,10 +61,23 @@ h2{
 
 }
 
+a{
+  color: lawngreen;
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 1em;
+}
 
+img[alt="linkedin"] {
+  filter: invert(65%) sepia(69%) saturate(675%) hue-rotate(43deg) brightness(111%) contrast(107%);
+  width: 32px;
+
+}
 .blink {
-  animation: blink-animation 01s steps(5, start) infinite;
-  -webkit-animation: blink-animation 01s steps(5, start) infinite;
+  padding-left: 1em;
+ /* animation: blink-animation 01s steps(5, start) infinite;
+  -webkit-animation: blink-animation 01s steps(5, start) infinite;*/
 }
 
 @keyframes blink-animation {

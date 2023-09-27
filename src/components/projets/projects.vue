@@ -41,7 +41,7 @@ onMounted(async () => {
         {{ toDisplay[0].description }}
       </p>
       <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
-      <button class="knowMore" @click="$emit('toggleProject')">En savoir plus sur le projet</button>
+      <button class="knowMore" @click="$emit('toggleProject')">Voir mes autres projets</button>
     </span>
   </div>
 </template>

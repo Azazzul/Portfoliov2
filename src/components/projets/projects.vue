@@ -18,7 +18,8 @@ onMounted(async () => {
   }).then( (res: AxiosResponse) => {
     isLoading.value = false;
       toDisplay.value = res.data.data
-      console.log(toDisplay.value)
+      console.log(toDisplay.value[0].title.length)
+
   },(error : AxiosError) => console.log(error))
 })
 // console.log(experience)
@@ -38,7 +39,7 @@ onMounted(async () => {
       </h3>
       <img :src="toDisplay[0]?.image" alt="image projet"/>
       <p>
-        {{ toDisplay[0].description }}
+        {{ toDisplay[0].description.length < 150 ? toDisplay[0].description : toDisplay[0].description.split('.')[0] + '...' }}
       </p>
       <a :href="toDisplay[0]?.lien" target="_blank"> <img src="../../assets/github.svg" alt="github icon"></a>
       <button class="knowMore" @click="$emit('toggleProject')">Voir mes autres projets</button>
@@ -65,7 +66,7 @@ div > h2 {
 
 h3{
   margin-top: 0.5em;
-  padding-top: 1em;
+  padding-top: 0.5em;
   margin-bottom: 0.5em;
 }
 

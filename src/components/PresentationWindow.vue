@@ -21,14 +21,7 @@
     guitare
     orfeivrerie
     Jeux Vidéo
-    programmation
-    <h2>
-      Mes réseaux
-    </h2>
-    <a href="https://github.com/Azazzul" target="_blank"><img src="../assets/github.svg" alt="github"> </a>
-    <a href="https://www.linkedin.com/in/benoit-fardoux/" target="_blank"> <img src="../assets/linkedin.svg"
-                                                                                alt="linkedin"> </a>
-  </div>
+    programmation</div>
 
 </template>
 

@@ -36,7 +36,7 @@ onMounted(async () => {
       <h3>
         {{ toDisplay[0]?.title }}
       </h3>
-      <img :src="'../../..' + toDisplay[0]?.image" alt="image projet"/>
+      <img :src="toDisplay[0]?.image" alt="image projet"/>
       <p>
         {{ toDisplay[0].description }}
       </p>

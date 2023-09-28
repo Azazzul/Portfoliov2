@@ -56,6 +56,7 @@ div {
   padding: 1em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width:30.2%;
   height: 68%;
 }

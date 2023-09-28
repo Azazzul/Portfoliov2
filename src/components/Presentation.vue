@@ -50,6 +50,12 @@ const toggleReduced = () => {
   
 }
 
+
+@media (min-width: 1920px) {
+  #presentation.is-reduced{
+    height: 17%;
+  }
+}
 #presentation.is-reduced {
   max-height: 33%; /* Hauteur réduite de la div */
 

@@ -39,6 +39,7 @@ h2{
   right: 0.5em;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 #contactForm input, textarea {

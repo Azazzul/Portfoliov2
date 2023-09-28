@@ -158,7 +158,11 @@ onMounted(async () => {
   flex-direction: column;
 }
 
-
+@media (min-width: 1920px) {
+    h2{
+      font-size: 1.5rem;
+    }
+  }
 #presentation button {
   margin-top: 1em;
   color: white;

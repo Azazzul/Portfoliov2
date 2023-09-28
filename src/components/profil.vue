@@ -12,7 +12,7 @@
 .popup{
   position: fixed;
   top: 0.5em;
-  left: 40.4%;
+  left: 40.4vw;
   transform: translate(-50%, 0);
   padding: 0em;
   display: flex;

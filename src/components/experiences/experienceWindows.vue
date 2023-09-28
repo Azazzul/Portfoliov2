@@ -45,6 +45,8 @@ const previousItem = () => {
   height: 70%;
   overflow-y: auto; /* Ajout de la propriété overflow-y avec la valeur auto */
   backdrop-filter: blur(200px);
+  background-color: #ffffff29;
+
 }
 
 

@@ -52,8 +52,8 @@ div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 59%;
-  width: 30.2%;
+  height: 59vh;
+  width: 30.2vw;
 }
 
 span > h2 {

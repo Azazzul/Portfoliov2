@@ -35,14 +35,14 @@ const toggleReduced = () => {
 
 #presentation {
   overflow: hidden; /* Masque le contenu dépassant de la div */
-  transition: max-height 0.5s ease; /* Spécifie la durée et la fonction de transition */
-  max-height: 1000px; /* Hauteur maximale de la div */
+  transition: height 0.1s ease; /* Spécifie la durée et la fonction de transition */
+  height: 60vh; /* Hauteur maximale de la div */
   position: fixed;
   top: 0.5em;
   left: 0.5em;
  /*background: rgba(255,255,255,7%);*/
   padding: 1em;
-  width: 30.2%;
+  width: 30.2vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,11 +53,11 @@ const toggleReduced = () => {
 
 @media (min-width: 1920px) {
   #presentation.is-reduced{
-    height: 17%;
+    height: 17vh;
   }
 }
 #presentation.is-reduced {
-  max-height: 33%; /* Hauteur réduite de la div */
+  height: 17vh; /* Hauteur réduite de la div */
 
 }
 

@@ -31,7 +31,7 @@ onMounted(async () => {
     <span v-if="isLoading">
         <img src="../../assets/Loading.svg" alt="loading">
     </span>
-    <span v-if="!isLoading">
+    <span v-if="!isLoading" id="experience_p">
 
       <h3>
         {{ toDisplay?.title }}
@@ -55,7 +55,9 @@ div {
   height: 59vh;
   width: 30.2vw;
 }
-
+#experience_p{
+  height: 100%;
+}
 span > h2 {
   margin: 0;
 }
@@ -75,7 +77,7 @@ img[alt='github icon'] {
 }
 
 img[alt='image projet'] {
-  max-height: 10em;
+  max-height: 30%;
   margin-bottom: 0.5em;
 }
 </style>

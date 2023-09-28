@@ -32,13 +32,14 @@ h2{
   text-align: left;
   background-color: black;
   color: lawngreen;
-  padding: 2em;
-  width: 28.2%;
-  height: 21.5%;
+  width: 30.2vw;
+  padding: 1em;
+  height: 26vh;
   bottom: 0.5em;
   right: 0.5em;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 #contactForm input, textarea {

@@ -37,7 +37,7 @@ onMounted(async () => {
       <h3>
         {{ toDisplay[0]?.title }}
       </h3>
-      <img :src="toDisplay[0]?.image" alt="image projet"/>
+      <img :src="toDisplay[0]?.image" alt="image projet" id="img_projet_principale"/>
       <p>
         {{ toDisplay[0].description.length < 150 ? toDisplay[0].description : toDisplay[0].description.split('.')[0] + '...' }}
       </p>
@@ -56,8 +56,9 @@ div {
   padding: 1em;
   display: flex;
   flex-direction: column;
-  width:30.2%;
-  height: 68%;
+  justify-content: center;
+  width:30.2vw;
+  height: 68vh;
 }
 
 div > h2 {
@@ -72,6 +73,7 @@ h3{
 
 .project{
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
 }
@@ -86,12 +88,12 @@ img[alt='github icon'] {
   height: 3em;
 }
 
-img[alt='image projet'] {
-  max-height: 12.5em;
+
+#img_projet_principale{
+  max-height: 50%;
   margin-bottom: 0.5em;
   padding-bottom: 1em;
   padding-top: 0.5em;
-  
 }
 
 </style>

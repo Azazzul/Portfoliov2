@@ -95,12 +95,12 @@ onMounted(async ()=>{
 div {
   position: fixed;
   bottom: 0.5em;
-  left: 50%;
+  left: 50vw;
   transform: translate(-50%, 0%);
 
   padding: 1em;
-  width: 29%;
-  height: 10.99em;
+  width: 29vw;
+  height: 24.1vh;
   max-height: 20em;
 }
 

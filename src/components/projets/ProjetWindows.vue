@@ -41,9 +41,8 @@ const previousItem = () => {
 <style scoped>
 .div-centree {
   z-index: 2000;
-  width: 50%;
-  height: 70%;
-  max-height: 80%;
+  width: 50vw;
+  height: 70vh;
   overflow-y: auto; /* Ajout de la propriété overflow-y avec la valeur auto */
   backdrop-filter: blur(200px);
 }
@@ -69,6 +68,13 @@ img[alt='github icon'] {
     flex-direction: column;
     justify-content: space-between;
 }
+::-webkit-scrollbar{
+ display: none;
+}
+
+
+
+
 
 .content {
   margin-bottom: 1em; /* Ajout d'une marge inférieure pour séparer les éléments */

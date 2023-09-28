@@ -12,23 +12,24 @@
     domaines comme l'éléctronique,l'informatique ou encore la papeterie, stage réalisé à Fabriano
       en Italie avec le programme Erasmus. </p>
     <p>
-    Ensuite, j'ai pu obtenir un Diplôme Universitaire Technologique à l'IUT de Lens, formation pendant laquelle
+    Ensuite, j'ai pu obtenir un Diplôme Universitaire Technologique Informatique à l'IUT de Lens, formation pendant laquelle
     j'ai beaucoup approfondi mes connaissances en informatique et où j'ai effectué un stage de 8 semaines à Paris
-    chez Zola où j'étais développeur Fullstack. Suite à cette année j'ai réalisé une année d'alternance chez Worldline.
+    chez Zola où j'étais développeur Fullstack.
+    </p>
+    <p>
+        J'ai profité des vacances d'été 2022 pour participer à un chantier bénévole à Berzy-le-sec où j'ai appris les base de l'orfeivrerie.
+    </p>
+    <p>
+      Après avoir obtenu mon DUT Informatique j'ai effectué une première année d'alternance au sein de l'ISEN où j'ai pu encore approfondir mes connaissances sur beaucoup de sujets différents allant du réseau à la base de données en passant par la programmation web.
     </p>
     <h2>Mes passions </h2>
-    MTG
-    guitare
-    orfeivrerie
-    Jeux Vidéo
-    programmation
-    <h2>
-      Mes réseaux
-    </h2>
-    <a href="https://github.com/Azazzul" target="_blank"><img src="../assets/github.svg" alt="github"> </a>
-    <a href="https://www.linkedin.com/in/benoit-fardoux/" target="_blank"> <img src="../assets/linkedin.svg"
-                                                                                alt="linkedin"> </a>
-  </div>
+    <span>
+    <p>
+        Je suis passionné par Magic the Gathering, un jeu de carte à collectionner depuis 2 ans maintenant.</p>
+        <p>Je suis aussi passionné par l'orfeivrerie, le jeu vidéo et la programmation.
+    </p>
+  </span>
+    </div>
 
 </template>
 

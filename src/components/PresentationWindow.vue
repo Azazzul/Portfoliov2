@@ -25,8 +25,8 @@
     <h2>Mes passions </h2>
     <span>
     <p>
-        Je suis passionné par Magic the Gathering, un jeu de carte à collectionner depuis 2 ans maintenant.</p>
-        <p>Je suis aussi passionné par l'orfèvrerie, le jeu vidéo et la programmation.
+        Je suis passionné par la programation et l'informatique depuis mon lycée.</p>
+        <p>Je suis également passionné par l'orfèvrerie, le jeu vidéo et Magic the Gathering, un jeu de carte à collectionner .
     </p>
   </span>
     </div>

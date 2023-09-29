@@ -26,7 +26,7 @@
     <span>
     <p>
         Je suis passionné par Magic the Gathering, un jeu de carte à collectionner depuis 2 ans maintenant.</p>
-        <p>Je suis aussi passionné par l'orfeivrerie, le jeu vidéo et la programmation.
+        <p>Je suis aussi passionné par l'orfèvrerie, le jeu vidéo et la programmation.
     </p>
   </span>
     </div>
